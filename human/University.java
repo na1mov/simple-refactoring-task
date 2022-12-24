@@ -1,22 +1,78 @@
 package human;
 
-public class University extends Student {
+import java.util.ArrayList;
+import java.util.List;
+
+public class University {
+
+    private List<Student> students = new ArrayList();
+    String name;
+    int age;
 
     public University(String name, int age) {
-        super(name, age, 0);
+        this.name = name;
+        this.age = age;
     }
 
-    public Student getStudentWithAverageGrade() {
-        //TODO:
-        return null;
+    public List getStudents() {
+        return students;
     }
 
-    public Student getStudentWithMaxAverageGrade(double averageGrade) {
-        //TODO:
-        return null;
+    public void setStudents(List students) {
+        this.students = students;
     }
 
-    public void getStudentWithMinAverageGradeAndExpel() {
-        //TODO:
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Student getStudentWithAverageGrade(double averageGrade) {
+        Student stud = null;
+        for (Student s : students) {
+            if (s.getAverageGrade() == averageGrade) {
+                stud = s;
+            }
+        }
+        return stud;
+    }
+
+    public Student getStudentWithMaxAverageGrade() {
+        Student stud = null;
+        double maxAvaregeGrade = 0;
+        for (Student s : students) {
+            if (s.getAverageGrade() > maxAvaregeGrade) {
+                maxAvaregeGrade = s.getAverageGrade();
+                stud = s;
+            }
+        }
+        return stud;
+    }
+
+    public Student getStudentWithMinAverageGrade() {
+        Student stud = null;
+        double minAverageGrade = 100;
+        for (Student s : students) {
+            if (s.getAverageGrade() < minAverageGrade) {
+                minAverageGrade = s.getAverageGrade();
+                stud = s;
+            }
+        }
+        return stud;
+    }
+
+    public void expel(Student student) {
+        students.remove(student);
     }
 }
